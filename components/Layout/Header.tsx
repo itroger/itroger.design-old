@@ -1,9 +1,12 @@
 import React from 'react'
-import DarkMode from '@components/Layout/DarkMode'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import DarkMode from '@components/Layout/DarkMode'
 import Logos from '@components/Logos'
 
 const Header = () => {
+  const router = useRouter()
+
   return (
     <div className="sticky top-0 flex justify-center items-center h-12 px-2 bg-zinc-50 dark:bg-zinc-900">
       <div className="flex justify-between max-w-6xl w-full">
@@ -13,12 +16,19 @@ const Header = () => {
           </a>
         </Link>
         <div className="flex items-end gap-4">
-          <Link href="/blog">
-            <a>博客</a>
-          </Link>
-          <Link href="/about">
-            <a>关于</a>
-          </Link>
+          {menus.map(menu => (
+            <Link key={menu.href} href={menu.href}>
+              <a
+                className={`${
+                  menu.href.includes(router.pathname.split('/')[1]) &&
+                  router.pathname !== '/' &&
+                  'font-semibold text-zinc-800 dark:text-zinc-300'
+                }`}
+              >
+                {menu.text}
+              </a>
+            </Link>
+          ))}
         </div>
         <div className="flex gap-4">
           <a
@@ -36,3 +46,23 @@ const Header = () => {
 }
 
 export default Header
+
+type Menu = {
+  text: string
+  href: string
+}
+
+const menus: Menu[] = [
+  {
+    text: '博客',
+    href: '/blog'
+  },
+  {
+    text: '示例',
+    href: '/example'
+  },
+  {
+    text: '关于',
+    href: '/about'
+  }
+]

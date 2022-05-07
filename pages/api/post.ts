@@ -6,7 +6,6 @@ const post: NextApiHandler = async (req, res) => {
     switch (req.method) {
       case 'GET':
         const posts = await prisma.post.findMany()
-        console.log(posts)
         res.status(200).json(posts)
         break
       case 'POST':

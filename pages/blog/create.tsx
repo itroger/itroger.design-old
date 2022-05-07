@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { Prisma } from '@prisma/client'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 
 const CreatePost = () => {
+  const [imageUrl, setImageUrl] = useState<string>()
+
   const {
     register,
     formState: { errors },
@@ -13,9 +16,22 @@ const CreatePost = () => {
     await axios.post('/api/post', data)
   })
 
+  const upload = async image => {
+    if (!image) return
+
+    let toastId
+
+    try {
+      const { data } = await axios.post('/api/image', { image })
+      setImageUrl(data?.url)
+    } catch (e) {
+      setImageUrl('')
+    }
+  }
+
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-xl w-full p-4 border">
+      <div className="max-w-xl w-full p-4 border rounded-md">
         <h2 className="text-center mb-2">创建博文</h2>
         <form className="flex flex-col gap-2" onSubmit={onSubmit}>
           <label className="text-zinc-500 text-sm">Title</label>
@@ -34,6 +50,14 @@ const CreatePost = () => {
               'placeholder:text-red-500'
             }`}
             {...register('description', { required: true })}
+          />
+          <label className="text-zinc-500 text-sm">Image</label>
+          <input
+            placeholder="请上传图片"
+            type="file"
+            onChange={e => console.log(e)}
+            className="border h-10 px-2 rounded-md"
+            {...register('image')}
           />
           <label className="text-zinc-500 text-sm">Content</label>
           <input

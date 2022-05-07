@@ -3,19 +3,15 @@ import { GetServerSideProps } from 'next'
 import { Post } from '@prisma/client'
 import prisma from '@lib/prisma'
 
-const getServerSideProps: GetServerSideProps = async () => {
-  const posts = await prisma.post.findMany()
-
-  console.log(posts)
-
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts))
+      posts: JSON.parse(JSON.stringify(await prisma.post.findMany()))
     }
   }
 }
 
-const PostList: React.FC<Post[]> = props => {
+const PostList: React.FC<{ posts: Post[] }> = props => {
   console.log(props)
   return <div>博客</div>
 }
