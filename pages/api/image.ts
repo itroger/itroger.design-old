@@ -18,6 +18,7 @@ export const config = {
 
 const image: NextApiHandler = async (req, res) => {
   let { image } = req.body
+  console.log(image)
   if (!image) {
     return res.status(500).json({ message: 'No image provided' })
   }

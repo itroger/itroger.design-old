@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Prisma } from '@prisma/client'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 
 const CreatePost = () => {
   const [imageUrl, setImageUrl] = useState<string>()
@@ -13,20 +12,19 @@ const CreatePost = () => {
   } = useForm<Prisma.PostCreateInput>()
 
   const onSubmit = handleSubmit(async data => {
-    await axios.post('/api/post', data)
+    // await upload(data.image)
+    // await axios.post('/api/post', data)
   })
 
-  const upload = async image => {
-    if (!image) return
+  const upload = async event => {
+    setImageUrl(window.webkitURL.createObjectURL(event.target.files[0]))
 
-    let toastId
-
-    try {
-      const { data } = await axios.post('/api/image', { image })
-      setImageUrl(data?.url)
-    } catch (e) {
-      setImageUrl('')
-    }
+    // try {
+    //   const { data } = await axios.post('/api/image', { image })
+    //   setImageUrl(data?.url)
+    // } catch (e) {
+    //   setImageUrl('')
+    // }
   }
 
   return (
@@ -55,10 +53,13 @@ const CreatePost = () => {
           <input
             placeholder="请上传图片"
             type="file"
-            onChange={e => console.log(e)}
+            accept="image/*"
             className="border h-10 px-2 rounded-md"
-            {...register('image')}
+            {...register('image', {
+              onChange: upload
+            })}
           />
+          {imageUrl && <img src={imageUrl} alt="image" />}
           <label className="text-zinc-500 text-sm">Content</label>
           <input
             placeholder="请输入正文"

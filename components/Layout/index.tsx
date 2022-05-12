@@ -1,18 +1,16 @@
+import WithIpad from '@components/Layout/WithIpad'
 import Header from '@components/Layout/Header'
 import Footer from '@components/Layout/Footer'
 
 const Layout = ({ children }) => {
   return (
-    <div className="text-black dark:text-zinc-500">
+    <WithIpad>
       <Header />
-      <main
-        className="max-w-6xl w-ful my-0 mx-auto px-2 md:px-0 py-4"
-        style={{ minHeight: 'calc(100vh - 48px)' }}
-      >
+      <main className="max-w-6xl w-ful my-0 mx-auto px-2 md:px-0 py-4">
         {children}
       </main>
       <Footer />
-    </div>
+    </WithIpad>
   )
 }
 

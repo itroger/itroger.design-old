@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 body {
-    background-color: #fff;
+    background: linear-gradient(to right, #fb923c, #db2777);
 }
 
 .dark body {
     background-color: #111;
+}
+
+.background {
+    background-image: url("../public/images/iPad.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
