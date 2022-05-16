@@ -6,6 +6,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^4.2.5",
+    "@mantine/form": "^4.2.5",
+    "@mantine/hooks": "^4.2.5",
+    "@mantine/next": "^4.2.5",
+    "@mantine/notifications": "^4.2.5",
+    "@mantine/rte": "^4.2.5",
     "@prisma/client": "^3.13.0",
     "@supabase/supabase-js": "^1.35.2",
     "axios": "^0.27.2",
@@ -13,8 +19,7 @@
     "nanoid": "^3.3.4",
     "next": "^12.1.6",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-hook-form": "^7.30.0"
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",

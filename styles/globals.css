@@ -9,9 +9,3 @@ body {
 .dark body {
     background-color: #111;
 }
-
-.background {
-    background-image: url("../public/images/iPad.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-}

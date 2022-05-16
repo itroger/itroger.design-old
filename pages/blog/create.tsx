@@ -1,80 +1,85 @@
 import { useState } from 'react'
-import { Prisma } from '@prisma/client'
-import { useForm } from 'react-hook-form'
+import dynamic from 'next/dynamic'
+import { Prisma, Post } from '@prisma/client'
+import { Box, Group, TextInput, Button } from '@mantine/core'
+import { useForm } from '@mantine/form'
+import { showNotification } from '@mantine/notifications'
+import axios from 'axios'
+import FormData from 'form-data'
+
+const RichTextEditor = dynamic(() => import('@mantine/rte'), {
+  ssr: false,
+  loading: () => null
+})
 
 const CreatePost = () => {
-  const [imageUrl, setImageUrl] = useState<string>()
+  const [value, setValue] = useState<string>('Code')
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit
-  } = useForm<Prisma.PostCreateInput>()
-
-  const onSubmit = handleSubmit(async data => {
-    // await upload(data.image)
-    // await axios.post('/api/post', data)
+  const form = useForm<Prisma.PostCreateInput>({
+    initialValues: {
+      title: '',
+      description: '',
+      content: ''
+    }
   })
 
-  const upload = async event => {
-    setImageUrl(window.webkitURL.createObjectURL(event.target.files[0]))
+  const handleSubmit = async (values: Prisma.PostCreateInput) => {
+    const post = await axios.post<Post, Post, Prisma.PostCreateInput>(
+      '/api/post',
+      values
+    )
+    if (post) {
+      showNotification({
+        message: '创建博文成功'
+      })
+    }
+  }
 
-    // try {
-    //   const { data } = await axios.post('/api/image', { image })
-    //   setImageUrl(data?.url)
-    // } catch (e) {
-    //   setImageUrl('')
-    // }
+  const onImageUpload: (file: File) => Promise<string> = file => {
+    console.log(file)
+    return new Promise((resolve, reject) => {
+      const formData = new FormData()
+      formData.append('image', file)
+      axios
+        .post('/api/image', formData)
+        .then(res => resolve(res.data.url))
+        .catch(error => console.error('Error: ', error))
+    })
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="max-w-xl w-full p-4 border rounded-md">
-        <h2 className="text-center mb-2">创建博文</h2>
-        <form className="flex flex-col gap-2" onSubmit={onSubmit}>
-          <label className="text-zinc-500 text-sm">Title</label>
-          <input
-            placeholder="请输入标题"
-            className={`border h-10 px-2 rounded-md ${
-              errors?.title?.type === 'required' && 'placeholder:text-red-500'
-            }`}
-            {...register('title', { required: true })}
-          />
-          <label className="text-zinc-500 text-sm">Description</label>
-          <input
-            placeholder="请输入摘要"
-            className={`border h-10 px-2 rounded-md ${
-              errors?.description?.type === 'required' &&
-              'placeholder:text-red-500'
-            }`}
-            {...register('description', { required: true })}
-          />
-          <label className="text-zinc-500 text-sm">Image</label>
-          <input
-            placeholder="请上传图片"
-            type="file"
-            accept="image/*"
-            className="border h-10 px-2 rounded-md"
-            {...register('image', {
-              onChange: upload
-            })}
-          />
-          {imageUrl && <img src={imageUrl} alt="image" />}
-          <label className="text-zinc-500 text-sm">Content</label>
-          <input
-            placeholder="请输入正文"
-            className={`border h-10 px-2 rounded-md ${
-              errors?.content?.type === 'required' && 'placeholder:text-red-500'
-            }`}
-            {...register('content', { required: true })}
-          />
-          <input
-            type="submit"
-            className="h-10 border rounded-md bg-primary text-zinc-50 cursor-pointer"
-          />
-        </form>
-      </div>
-    </div>
+    <Box className="px-4">
+      <form onSubmit={form.onSubmit(handleSubmit)}>
+        <TextInput
+          required
+          label="标题"
+          placeholder="标题"
+          {...form.getInputProps('title')}
+        />
+        <TextInput
+          required
+          label="描述"
+          placeholder="描述"
+          {...form.getInputProps('description')}
+        />
+        <TextInput
+          required
+          label="内容"
+          placeholder="内容"
+          {...form.getInputProps('content')}
+        />
+        <RichTextEditor
+          value={value}
+          onChange={setValue}
+          onImageUpload={onImageUpload}
+        />
+        <Group mt="xl">
+          <Button fullWidth type="submit" className="bg-primary">
+            提交
+          </Button>
+        </Group>
+      </form>
+    </Box>
   )
 }
 
