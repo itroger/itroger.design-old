@@ -8,10 +8,12 @@ import highlight from '@bytemd/plugin-highlight'
 import axios from 'axios'
 import 'bytemd/dist/index.min.css'
 import 'highlight.js/styles/github.css'
+import { useSession } from 'next-auth/react'
 
 const CreatePost = () => {
   const [title, setTitle] = useState<string>()
   const [content, setContent] = useState<string>()
+  const { status } = useSession()
 
   const handlePublish = async () => {
     if (!title) {
@@ -55,6 +57,10 @@ const CreatePost = () => {
 }
 
 export default CreatePost
+
+CreatePost.auth = {
+  unauthorized: '/login'
+}
 
 export const plugins = [gfm(), highlight()]
 
