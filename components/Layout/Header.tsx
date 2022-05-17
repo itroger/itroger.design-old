@@ -55,7 +55,7 @@ type Menu = {
 const menus: Menu[] = [
   {
     text: '博客',
-    href: '/blog'
+    href: '/post'
   },
   {
     text: '示例',

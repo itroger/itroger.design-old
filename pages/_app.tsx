@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { NotificationsProvider } from '@mantine/notifications'
 import Layout from '@components/Layout'
 import '@styles/globals.css'
+import '@styles/juejin.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

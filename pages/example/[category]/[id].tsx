@@ -41,16 +41,13 @@ export const getStaticProps: GetStaticProps = async context => {
 
 const ExampleDetail: React.FC<{ example: Example }> = props => {
   const { example } = props
+
   return (
-    <>
-      {example && (
-        <iframe
-          className="w-full h-full border-r border-black rounded overflow-hidden"
-          src={example.src}
-          title={example.text}
-        />
-      )}
-    </>
+    <iframe
+      className="w-full h-full overflow-hidden"
+      src={example.src}
+      title={example.text}
+    />
   )
 }
 
