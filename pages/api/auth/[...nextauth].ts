@@ -13,6 +13,7 @@ const auth: NextApiHandler = async (req, res) => {
       })
     ],
     adapter: PrismaAdapter(prisma),
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
       strategy: 'database',
       maxAge: 24 * 60 * 60,
