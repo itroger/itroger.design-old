@@ -1,10 +1,14 @@
 import { NextApiHandler } from 'next'
 import prisma from '@lib/prisma'
 import { Post } from '@prisma/client'
+import session from '@utils/session'
 
 const post: NextApiHandler = async (req, res) => {
+  await session(req, res)
+
   try {
     let post: Post
+
     switch (req.method) {
       case 'GET':
         const posts = await prisma.post.findMany()
@@ -22,7 +26,9 @@ const post: NextApiHandler = async (req, res) => {
         res.status(201).json(post)
         break
       case 'DELETE':
-        post = await prisma.post.delete({ where: { id: String(req.query.id) } })
+        post = await prisma.post.delete({
+          where: { id: String(req.query.id) }
+        })
         res.status(204).json(post)
         break
     }

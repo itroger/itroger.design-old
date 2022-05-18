@@ -11,8 +11,8 @@ import 'highlight.js/styles/github.css'
 import { useSession } from 'next-auth/react'
 
 const CreatePost = () => {
-  const [title, setTitle] = useState<string>()
-  const [content, setContent] = useState<string>()
+  const [title, setTitle] = useState<string>('')
+  const [content, setContent] = useState<string>('')
   const { status } = useSession()
 
   const handlePublish = async () => {

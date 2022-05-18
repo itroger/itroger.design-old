@@ -1,21 +1,24 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useSession, signOut } from 'next-auth/react'
 import DarkMode from '@components/Layout/DarkMode'
 import Logos from '@components/Logos'
+import { Avatar, Group, Menu, Text } from '@mantine/core'
 
 const Header = () => {
   const router = useRouter()
+  const { data: session } = useSession()
 
   return (
     <div className="sticky top-0 flex justify-center items-center h-12 px-2 bg-zinc-50 dark:bg-zinc-900">
-      <div className="flex justify-between max-w-6xl w-full">
+      <div className="flex gap-4 max-w-6xl w-full">
         <Link href="/">
           <a>
             <Logos.FaviconSvg />
           </a>
         </Link>
-        <div className="flex items-end gap-4">
+        <div className="flex-1 flex items-end gap-4">
           {menus.map(menu => (
             <Link key={menu.href} href={menu.href}>
               <a
@@ -31,6 +34,22 @@ const Header = () => {
           ))}
         </div>
         <div className="flex gap-4">
+          {session ? (
+            <Menu
+              control={
+                <Group>
+                  <Avatar src={session.user.image} size="sm" radius="xl" />
+                  <Text>{session.user.name}</Text>
+                </Group>
+              }
+            >
+              <Menu.Item onClick={() => signOut()}>登出</Menu.Item>
+            </Menu>
+          ) : (
+            <Link href={`/login?callbackUrl=${router.asPath}`}>
+              <a className="cursor-pointer">登录</a>
+            </Link>
+          )}
           <a
             href="https://github.com/itroger/itroger.design"
             target="_blank"
