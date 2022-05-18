@@ -1,11 +1,12 @@
 # 技术栈
-- TypeScript
-- Tailwind
-- Next.js
-- NextAuth.js
-- Supabase
-- Prisma
-- Vercel
+- 类型: TypeScript
+- 样式: Tailwind
+- 组件: Mantine
+- 框架: Next with React
+- 授权: NextAuth
+- 数据: Supabase with PostgreSQL
+- ORM: Prisma
+- 部署: Vercel
 
 ## Next.js
 `next`: 启动开发模式
