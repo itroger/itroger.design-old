@@ -62,21 +62,21 @@ model VerificationToken {
 }
 
 model Post {
-    id          String @id @default(cuid())
-    title       String
-    content     String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    author      User?   @relation(fields: [authorId], references: [id])
-    authorId    Int?
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
 }
 
 model Example {
-    id          String @id @default(cuid())
-    category    String
-    text        String @unique
-    href        String @unique
-    src         String @unique @db.VarChar(300)
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  category  String
+  text      String   @unique
+  href      String   @unique
+  src       String   @unique @db.VarChar(300)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

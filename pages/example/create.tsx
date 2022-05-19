@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form'
 import { showNotification } from '@mantine/notifications'
 import axios from 'axios'
 
-const CreateExample = () => {
+const ExampleCreate = () => {
   const form = useForm<Prisma.ExampleCreateInput>({
     initialValues: {
       category: '',
@@ -63,4 +63,4 @@ const CreateExample = () => {
   )
 }
 
-export default CreateExample
+export default ExampleCreate

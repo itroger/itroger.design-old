@@ -2,11 +2,12 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Post } from '@prisma/client'
 import prisma from '@lib/prisma'
-import { Viewer } from '@bytemd/react'
 import { Box, Card, Text } from '@mantine/core'
+import { Viewer } from '@bytemd/react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await prisma.post.findMany()
+
   return {
     paths: posts.map(post => ({
       params: { id: post.id }
@@ -40,6 +41,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
 const PostDetail: React.FC<{ post: Post }> = props => {
   const { post } = props
+
   return (
     <Box className="flex justify-center h-full p-2">
       <Card className="max-w-3xl w-full shadow-lg bg-white">

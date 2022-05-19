@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSession, signOut } from 'next-auth/react'
+import { Avatar, Group, Menu, Text } from '@mantine/core'
 import DarkMode from '@components/Layout/DarkMode'
 import Logos from '@components/Logos'
-import { Avatar, Group, Menu, Text } from '@mantine/core'
 
 const Header = () => {
   const router = useRouter()

@@ -1,12 +1,12 @@
+import React, { useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import prisma from '@lib/prisma'
-import React, { useState } from 'react'
 import { Post, Prisma } from '@prisma/client'
+import prisma from '@lib/prisma'
 import { Button, TextInput } from '@mantine/core'
-import { Editor } from '@bytemd/react'
-import { plugins, locale } from '../create'
 import { showNotification } from '@mantine/notifications'
+import { Editor } from '@bytemd/react'
+import editor from '@utils/editor'
 import axios from 'axios'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -96,8 +96,8 @@ const PostEdit: React.FC<{ post: Post }> = props => {
         </Button>
       </div>
       <Editor
-        locale={locale}
-        plugins={plugins}
+        locale={editor.locale}
+        plugins={editor.plugins}
         value={content}
         onChange={v => setContent(v)}
       />

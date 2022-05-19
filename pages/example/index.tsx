@@ -14,6 +14,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Example: React.FC<{ examples: Example[] }> = props => {
   const { examples } = props
+
   return (
     <div>
       {examples.map(example => (

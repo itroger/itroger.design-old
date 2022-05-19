@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Logos from '@components/Logos'
 
 const DarkMode = () => {
@@ -26,11 +26,15 @@ const DarkMode = () => {
     }
   }, [dark])
 
-  if (dark) {
-    return <Logos.LightSvg onClick={() => setDark(false)} />
-  } else {
-    return <Logos.DarkSvg onClick={() => setDark(true)} />
-  }
+  return (
+    <>
+      {dark ? (
+        <Logos.LightSvg onClick={() => setDark(false)} />
+      ) : (
+        <Logos.DarkSvg onClick={() => setDark(true)} />
+      )}
+    </>
+  )
 }
 
 export default DarkMode

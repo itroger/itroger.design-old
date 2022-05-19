@@ -1,9 +1,9 @@
 import React from 'react'
+import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { Post } from '@prisma/client'
 import prisma from '@lib/prisma'
 import { Box, Card, Text } from '@mantine/core'
-import Link from 'next/link'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
