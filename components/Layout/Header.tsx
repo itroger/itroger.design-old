@@ -46,9 +46,9 @@ const Header = () => {
               <Menu.Item onClick={() => signOut()}>登出</Menu.Item>
             </Menu>
           ) : (
-            <Link href={`/login?callbackUrl=${router.asPath}`}>
+            <>{router.pathname !== '/login' && <Link href={`/login?callbackUrl=${router.pathname}`}>
               <a className="cursor-pointer">登录</a>
-            </Link>
+            </Link>}</>
           )}
           <a
             href="https://github.com/itroger/itroger.design"

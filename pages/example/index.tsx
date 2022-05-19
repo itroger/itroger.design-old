@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { Example } from '@prisma/client'
-import prisma from '@lib/prisma'
+import { prisma } from '@lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {

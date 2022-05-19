@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Post } from '@prisma/client'
-import prisma from '@lib/prisma'
+import { prisma } from '@lib/prisma'
 import { Box, Card, Text } from '@mantine/core'
 import { Viewer } from '@bytemd/react'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSession } from 'next-auth/react'
 import { Prisma, Post } from '@prisma/client'
+import { supabase } from '@lib/supabase'
 import { Button, TextInput } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
 import { Editor } from '@bytemd/react'
@@ -12,7 +12,6 @@ import 'highlight.js/styles/github.css'
 const PostCreate = () => {
   const [title, setTitle] = useState<string>('')
   const [content, setContent] = useState<string>('')
-  const { status } = useSession()
 
   const handlePublish = async () => {
     if (!title) {
@@ -33,6 +32,29 @@ const PostCreate = () => {
     }
   }
 
+  const uploadImage: (file: File) => Promise<any> = async file => {
+    const fileExt = file.name.split('.').pop()
+    const fileName = `${Math.random()}.${fileExt}`
+    const filePath = `${fileName}`
+
+    return new Promise(async (resolve, reject) => {
+      const { data, error: uploadErr } = await supabase.storage
+        .from(process.env.SUPABASE_BUCKET)
+        .upload(filePath, file)
+
+      if (uploadErr) {
+        reject({ message: `Unable to upload image to storage: ${uploadErr}` })
+      }
+
+      resolve({
+        url: `${process.env.SUPABASE_URL.replace(
+          '.co',
+          '.in'
+        )}/storage/v1/object/public/${data.Key}`
+      })
+    })
+  }
+
   return (
     <div className="flex flex-col h-full">
       <div className="editor flex gap-4 p-2">
@@ -50,6 +72,9 @@ const PostCreate = () => {
         plugins={editor.plugins}
         value={content}
         onChange={v => setContent(v)}
+        uploadImages={async files =>
+          await Promise.all(files.map(file => uploadImage(file)))
+        }
       />
     </div>
   )

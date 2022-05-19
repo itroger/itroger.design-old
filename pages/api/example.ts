@@ -1,5 +1,5 @@
 import { NextApiHandler } from 'next'
-import prisma from '@lib/prisma'
+import { prisma } from '@lib/prisma'
 import session from '@utils/session'
 
 const example: NextApiHandler = async (req, res) => {
