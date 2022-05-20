@@ -196,3 +196,7 @@
         font-size: 18px;
     }
 }
+
+.bytemd-toolbar-icon:last-child {
+    display: none;
+}

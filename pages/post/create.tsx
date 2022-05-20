@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Prisma, Post } from '@prisma/client'
-import { supabase } from '@lib/supabase'
 import { Button, TextInput } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
 import { Editor } from '@bytemd/react'
@@ -33,25 +32,15 @@ const PostCreate = () => {
   }
 
   const uploadImage: (file: File) => Promise<any> = async file => {
-    const fileExt = file.name.split('.').pop()
-    const fileName = `${Math.random()}.${fileExt}`
-    const filePath = `${fileName}`
-
-    return new Promise(async (resolve, reject) => {
-      const { data, error: uploadErr } = await supabase.storage
-        .from(process.env.SUPABASE_BUCKET)
-        .upload(filePath, file)
-
-      if (uploadErr) {
-        reject({ message: `Unable to upload image to storage: ${uploadErr}` })
+    return new Promise(resolve => {
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
+      fileReader.onload = async () => {
+        const { data } = await axios.post('/api/image', {
+          file: fileReader.result
+        })
+        resolve(data)
       }
-
-      resolve({
-        url: `${process.env.SUPABASE_URL.replace(
-          '.co',
-          '.in'
-        )}/storage/v1/object/public/${data.Key}`
-      })
     })
   }
 

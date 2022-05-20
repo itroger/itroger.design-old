@@ -1,4 +1,6 @@
-# 技术栈
+# 全栈应用 Full-Stack App
+
+## 技术栈
 - 类型: TypeScript
 - 样式: Tailwind
 - 组件: Mantine

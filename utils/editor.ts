@@ -2,7 +2,18 @@ import gfm from '@bytemd/plugin-gfm'
 import highlight from '@bytemd/plugin-highlight'
 import { EditorProps } from '@bytemd/react'
 
-const plugins = [gfm(), highlight()]
+const plugins = [
+  gfm({
+    locale: {
+      strike: '删除线',
+      task: '任务列表',
+      table: '表格',
+      strikeText: '文本',
+      taskText: '待办事项'
+    }
+  }),
+  highlight()
+]
 
 const locale: EditorProps['locale'] = {
   write: '编辑',
@@ -48,7 +59,8 @@ const locale: EditorProps['locale'] = {
   codeText: '代码',
   codeLang: '编程语言',
   olItem: '项目',
-  ulItem: '项目'
+  ulItem: '项目',
+  hr: '分割线'
 }
 
 export default {
