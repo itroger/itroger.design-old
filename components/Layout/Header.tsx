@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSession, signOut } from 'next-auth/react'
-import { Avatar, Group, Menu, Text } from '@mantine/core'
-import DarkMode from '@components/Layout/DarkMode'
+import { Container, Avatar, Group, Menu, Text } from '@mantine/core'
 import Logos from '@components/Logos'
 
 const Header = () => {
@@ -11,8 +10,8 @@ const Header = () => {
   const { data: session } = useSession()
 
   return (
-    <div className="sticky top-0 flex justify-center items-center h-12 px-2 bg-zinc-50 dark:bg-zinc-900">
-      <div className="flex gap-4 max-w-6xl w-full">
+    <div className="sticky top-0 flex justify-center items-center h-12 bg-zinc-50 dark:bg-zinc-900">
+      <Container className="flex gap-4 max-w-6xl w-full">
         <Link href="/">
           <a>
             <Logos.FaviconSvg />
@@ -46,20 +45,16 @@ const Header = () => {
               <Menu.Item onClick={() => signOut()}>登出</Menu.Item>
             </Menu>
           ) : (
-            <>{router.pathname !== '/login' && <Link href={`/login?callbackUrl=${router.pathname}`}>
-              <a className="cursor-pointer">登录</a>
-            </Link>}</>
+            <>
+              {router.pathname !== '/login' && (
+                <Link href={`/login?callbackUrl=${router.pathname}`}>
+                  <a className="cursor-pointer">登录</a>
+                </Link>
+              )}
+            </>
           )}
-          <a
-            href="https://github.com/itroger/itroger.design"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Logos.GithubSvg />
-          </a>
-          <DarkMode />
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

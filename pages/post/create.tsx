@@ -49,6 +49,7 @@ const PostCreate = () => {
         </Button>
       </div>
       <Editor
+        placeholder="编辑文章..."
         locale={editor.locale}
         plugins={editor.plugins}
         value={content}
