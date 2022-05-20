@@ -33,7 +33,7 @@ const post: NextApiHandler = async (req, res) => {
         break
     }
   } catch (e) {
-    res.status(500).json({ message: 'Something went wrong: ' + e })
+    res.status(500).json({ message: `Something went wrong: ${e}` })
     prisma.$disconnect()
   }
 }

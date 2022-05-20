@@ -5,12 +5,14 @@ import { showNotification } from '@mantine/notifications'
 import { Editor } from '@bytemd/react'
 import editor from '@utils/editor'
 import axios from 'axios'
+import { uploadFile, getFiles, deleteFiles } from '@utils/files'
 import 'bytemd/dist/index.min.css'
 import 'highlight.js/styles/github.css'
 
 const PostCreate = () => {
   const [title, setTitle] = useState<string>('')
   const [content, setContent] = useState<string>('')
+  const [files, setFiles] = useState<string[]>([])
 
   const handlePublish = async () => {
     if (!title) {
@@ -19,6 +21,9 @@ const PostCreate = () => {
     if (!content) {
       return showNotification({ message: '请编写文章' })
     }
+
+    await deleteFiles(files.filter(file => !getFiles().includes(file)))
+
     const post = await axios.post<Post, Post, Prisma.PostCreateInput>(
       '/api/post',
       {
@@ -29,19 +34,6 @@ const PostCreate = () => {
     if (post) {
       return showNotification({ message: '创建文章成功' })
     }
-  }
-
-  const uploadImage: (file: File) => Promise<any> = async file => {
-    return new Promise(resolve => {
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
-      fileReader.onload = async () => {
-        const { data } = await axios.post('/api/image', {
-          file: fileReader.result
-        })
-        resolve(data)
-      }
-    })
   }
 
   return (
@@ -61,9 +53,14 @@ const PostCreate = () => {
         plugins={editor.plugins}
         value={content}
         onChange={v => setContent(v)}
-        uploadImages={async files =>
-          await Promise.all(files.map(file => uploadImage(file)))
-        }
+        uploadImages={async files => {
+          const imgArr = await Promise.all(files.map(file => uploadFile(file)))
+          setFiles(prevState => [
+            ...prevState,
+            ...imgArr.map(img => img.url.split('/').reverse()[0])
+          ])
+          return imgArr
+        }}
       />
     </div>
   )

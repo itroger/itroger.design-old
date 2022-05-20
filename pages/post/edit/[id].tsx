@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Post, Prisma } from '@prisma/client'
@@ -8,6 +8,9 @@ import { showNotification } from '@mantine/notifications'
 import { Editor } from '@bytemd/react'
 import editor from '@utils/editor'
 import axios from 'axios'
+import { getFiles, deleteFiles, uploadFile } from '@utils/files'
+import 'bytemd/dist/index.min.css'
+import 'highlight.js/styles/github.css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await prisma.post.findMany()
@@ -46,8 +49,13 @@ const PostEdit: React.FC<{ post: Post }> = props => {
   const { post } = props
   const [title, setTitle] = useState<string>(post.title)
   const [content, setContent] = useState<string>(post.content)
+  const [files, setFiles] = useState<string[]>([])
 
   const router = useRouter()
+
+  useEffect(() => {
+    setFiles(getFiles())
+  }, [])
 
   const handleEdit = async () => {
     if (!title) {
@@ -56,6 +64,9 @@ const PostEdit: React.FC<{ post: Post }> = props => {
     if (!content) {
       return showNotification({ message: '请编写文章' })
     }
+
+    await deleteFiles(files.filter(file => !getFiles().includes(file)))
+
     const post = await axios.put<Post, Post, Prisma.PostUpdateInput>(
       `/api/post?id=${props.post.id}`,
       {
@@ -69,14 +80,12 @@ const PostEdit: React.FC<{ post: Post }> = props => {
   }
 
   const handleDelete = async () => {
-    const post = await axios.delete<Post, Post, any>(
-      `/api/post?id=${props.post.id}`
-    )
+    await deleteFiles(Array.from(new Set([...getFiles(), ...files])))
 
-    if (post) {
-      showNotification({ message: '删除文章成功' })
-      await router.replace('/post/list')
-    }
+    await axios.delete<Post, Post, any>(`/api/post?id=${props.post.id}`)
+
+    showNotification({ message: '删除文章成功' })
+    await router.replace('/post/list')
   }
 
   return (
@@ -100,6 +109,14 @@ const PostEdit: React.FC<{ post: Post }> = props => {
         plugins={editor.plugins}
         value={content}
         onChange={v => setContent(v)}
+        uploadImages={async files => {
+          const imgArr = await Promise.all(files.map(file => uploadFile(file)))
+          setFiles(prevState => [
+            ...prevState,
+            ...imgArr.map(img => img.url.split('/').reverse()[0])
+          ])
+          return imgArr
+        }}
       />
     </div>
   )

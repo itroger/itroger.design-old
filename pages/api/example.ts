@@ -17,8 +17,7 @@ const example: NextApiHandler = async (req, res) => {
         break
     }
   } catch (e) {
-    console.error(e)
-    res.status(500).json({ message: 'Something went wrong' })
+    res.status(500).json({ message: `Something went wrong: ${e}` })
     prisma.$disconnect()
   }
 }
