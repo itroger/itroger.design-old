@@ -19,6 +19,14 @@ const auth: NextApiHandler = async (req, res) => {
       maxAge: 24 * 60 * 60,
       updateAge: 24 * 60 * 60
     },
+    callbacks: {
+      session: async ({ session, user }) => {
+        if (session?.user) {
+          session.user.id = user.id
+        }
+        return session
+      }
+    },
     pages: {
       signIn: '/login'
     }

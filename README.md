@@ -24,3 +24,4 @@
 - `prisma db push`: 推送数据库
 - `prisma db migrate`: 合并数据库
 - `prisma studio`: 查看数据库
+- `prisma format`: 格式化

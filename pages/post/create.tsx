@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSession } from 'next-auth/react'
 import { Prisma, Post } from '@prisma/client'
 import { Button, TextInput } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
@@ -14,6 +15,8 @@ const PostCreate = () => {
   const [content, setContent] = useState<string>('')
   const [files, setFiles] = useState<string[]>([])
 
+  const { data: session } = useSession()
+
   const handlePublish = async () => {
     if (!title) {
       return showNotification({ message: '请输入文章标题' })
@@ -24,11 +27,14 @@ const PostCreate = () => {
 
     await deleteFiles(files.filter(file => !getFiles().includes(file)))
 
-    const post = await axios.post<Post, Post, Prisma.PostCreateInput>(
+    const post = await axios.post<Post, Post, Prisma.PostUncheckedCreateInput>(
       '/api/post',
       {
         title,
-        content
+        content,
+        cover: '',
+        userId: Number(session.user.id),
+        username: session.user.name
       }
     )
     if (post) {

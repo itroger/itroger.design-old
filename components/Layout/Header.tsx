@@ -42,6 +42,11 @@ const Header = () => {
                 </Group>
               }
             >
+              <Menu.Item
+                onClick={() => router.push(`/user/${session.user.id}`)}
+              >
+                我的主页
+              </Menu.Item>
               <Menu.Item onClick={() => signOut()}>登出</Menu.Item>
             </Menu>
           ) : (
