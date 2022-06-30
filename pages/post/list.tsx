@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { Post } from '@prisma/client'
-import { prisma } from '@lib/prisma'
-import { Box, Card } from '@mantine/core'
+import { prisma } from '@/lib/prisma'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
@@ -17,13 +16,13 @@ const PostList: React.FC<{ posts: Post[] }> = props => {
   const { posts } = props
 
   return (
-    <Box>
+    <div>
       {posts.map(post => (
-        <Card key={post.id}>
+        <div key={post.id}>
           <Link href={`/post/edit/${post.id}`}>{post.title}</Link>
-        </Card>
+        </div>
       ))}
-    </Box>
+    </div>
   )
 }
 

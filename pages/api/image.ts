@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next'
-import session from '@utils/session'
-import { supabase } from '@lib/supabase'
+import session from '@/utils/session'
+import { supabase } from '@/lib/supabase'
 import { nanoid } from 'nanoid'
 import { decode } from 'base64-arraybuffer'
 

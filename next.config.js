@@ -1,6 +1,10 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['rszpojkwiwkfgjmcsfwx.supabase.co', 'localhost']
+    domains: [
+      'avatars.githubusercontent.com',
+      'rszpojkwiwkfgjmcsfwx.supabase.co',
+      'localhost'
+    ]
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { User } from '@prisma/client'
-import { prisma } from '@lib/prisma'
+import { prisma } from '@/lib/prisma'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const users = await prisma.user.findMany()

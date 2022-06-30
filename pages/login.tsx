@@ -6,8 +6,7 @@ import {
   signIn,
   ClientSafeProvider
 } from 'next-auth/react'
-import { Text } from '@mantine/core'
-import Logos from '@components/Logos'
+import Logos from '@/components/Logos'
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const providers = await getProviders()
@@ -39,7 +38,7 @@ const Login: React.FC<{ providers: ClientSafeProvider[] }> = props => {
           onClick={() => signIn(provider.id)}
         >
           <Logos.GithubSvg />
-          <Text className="font-semibold">Continue with {provider.name}</Text>
+          <span className="font-semibold">Continue with {provider.name}</span>
         </div>
       ))}
     </div>

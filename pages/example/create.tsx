@@ -1,65 +1,49 @@
 import { Prisma, Example } from '@prisma/client'
-import { Box, Group, TextInput, Button } from '@mantine/core'
-import { useForm } from '@mantine/form'
-import { showNotification } from '@mantine/notifications'
 import axios from 'axios'
+import { Button, Form, Input } from 'antd'
 
 const ExampleCreate = () => {
-  const form = useForm<Prisma.ExampleCreateInput>({
-    initialValues: {
-      category: '',
-      text: '',
-      href: '',
-      src: ''
-    }
-  })
-
   const handleSubmit = async (values: Prisma.ExampleCreateInput) => {
     const post = await axios.post<Example, Example, Prisma.ExampleCreateInput>(
       '/api/example',
       values
     )
-    if (post) {
-      showNotification({
-        message: '创建例子成功'
-      })
-    }
   }
 
   return (
-    <Box className="px-4">
-      <form onSubmit={form.onSubmit(handleSubmit)}>
-        <TextInput
-          required
-          label="类型"
-          placeholder="类型"
-          {...form.getInputProps('category')}
-        />
-        <TextInput
-          required
-          label="名称"
-          placeholder="名称"
-          {...form.getInputProps('text')}
-        />
-        <TextInput
-          required
-          label="页面路由"
-          placeholder="页面路由"
-          {...form.getInputProps('href')}
-        />
-        <TextInput
-          required
-          label="链接地址"
-          placeholder="链接地址"
-          {...form.getInputProps('src')}
-        />
-        <Group mt="xl">
-          <Button fullWidth type="submit" className="bg-primary">
-            提交
+    <div className="flex justify-center p-4">
+      <Form className="flex flex-col max-w-xl w-full">
+        <Form.Item
+          name="category"
+          rules={[{ required: true, message: '请输入类型' }]}
+        >
+          <Input placeholder="类型" />
+        </Form.Item>
+        <Form.Item
+          name="text"
+          rules={[{ required: true, message: '请输入名称' }]}
+        >
+          <Input placeholder="名称" />
+        </Form.Item>
+        <Form.Item
+          name="href"
+          rules={[{ required: true, message: '请输入页面路由' }]}
+        >
+          <Input placeholder="页面路由" />
+        </Form.Item>
+        <Form.Item
+          name="src"
+          rules={[{ required: true, message: '请输入链接地址' }]}
+        >
+          <Input placeholder="链接地址" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit" className="w-full">
+            创建
           </Button>
-        </Group>
-      </form>
-    </Box>
+        </Form.Item>
+      </Form>
+    </div>
   )
 }
 

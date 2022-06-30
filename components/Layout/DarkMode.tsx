@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Logos from '@components/Logos'
+import Logos from '@/components/Logos'
 
 const DarkMode = () => {
   const [dark, setDark] = useState<boolean>()

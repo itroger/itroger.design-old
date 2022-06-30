@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Prisma, Post } from '@prisma/client'
-import { Button, TextInput } from '@mantine/core'
-import { showNotification } from '@mantine/notifications'
 import { Editor } from '@bytemd/react'
-import editor from '@utils/editor'
+import { Input, Button, message } from 'antd'
 import axios from 'axios'
-import { uploadFile, getFiles, deleteFiles } from '@utils/files'
+import editor from '@/utils/editor'
+import { uploadFile, getFiles, deleteFiles } from '@/utils/files'
 import 'bytemd/dist/index.min.css'
 import 'highlight.js/styles/github.css'
 
@@ -19,10 +18,10 @@ const PostCreate = () => {
 
   const handlePublish = async () => {
     if (!title) {
-      return showNotification({ message: '请输入文章标题' })
+      return message.warn('请输入文章标题')
     }
     if (!content) {
-      return showNotification({ message: '请编写文章' })
+      return message.warn('请输入文章内容')
     }
 
     await deleteFiles(files.filter(file => !getFiles().includes(file)))
@@ -37,20 +36,21 @@ const PostCreate = () => {
         username: session.user.name
       }
     )
+
     if (post) {
-      return showNotification({ message: '创建文章成功' })
+      message.success('创建文章成功')
     }
   }
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="editor flex gap-4 p-2">
-        <TextInput
+    <div className="flex flex-col gap-2 h-full">
+      <div className="editor flex gap-2">
+        <Input
           className="flex-1 border-none"
           placeholder="输入文章标题..."
           onChange={e => setTitle(e.target.value)}
         />
-        <Button className="bg-primary" onClick={handlePublish}>
+        <Button type="primary" className="bg-primary" onClick={handlePublish}>
           发布
         </Button>
       </div>

@@ -1,0 +1,222 @@
+.feature {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    filter: blur(100px);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+@keyframes keyframe_1 {
+    0%{transform:translateY(-50%) translateX(-50%) rotate(-20deg) translateX(20%)}
+    25%{transform:translateY(-50%) translateX(-50%) skew(-15deg,-15deg) rotate(80deg) translateX(30%)}
+    50%{transform:translateY(-50%) translateX(-50%) rotate(180deg) translateX(25%)}
+    75%{transform:translateY(-50%) translateX(-50%) skew(15deg,15deg) rotate(240deg) translateX(15%)}
+    to{transform:translateY(-50%) translateX(-50%) rotate(340deg) translateX(20%)}
+}
+
+.feature_1 {
+    width: 700px;
+    height: 700px;
+    z-index: -2;
+    left: 60%;
+    top: 40%;
+    animation-duration: 11s;
+    animation-name: keyframe_1;
+    position: absolute;
+    border-radius: 100%;
+    background-color: #ff0080;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.1,0,.9,1);
+}
+
+@keyframes keyframe_2 {
+    0%{transform:translateY(-50%) translateX(-50%) rotate(40deg) translateX(-20%)}
+    25%{transform:translateY(-50%) translateX(-50%) skew(15deg,15deg) rotate(110deg) translateX(-5%)}
+    50%{transform:translateY(-50%) translateX(-50%) rotate(210deg) translateX(-35%)}
+    75%{transform:translateY(-50%) translateX(-50%) skew(-15deg,-15deg) rotate(300deg) translateX(-10%)}
+    to{transform:translateY(-50%) translateX(-50%) rotate(400deg) translateX(-20%)}
+}
+
+.feature_2 {
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+    left: 40%;
+    top: 60%;
+    animation-duration: 11s;
+    animation-name: keyframe_2;
+    animation-direction: reverse;
+    position: absolute;
+    border-radius: 100%;
+    background: #50e3c2;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.1,0,.9,1);
+}
+
+@keyframes keyframe_3 {
+    0%{transform:translateY(-50%) translateX(-50%) translateX(-15%) translateY(10%)}
+    20%{transform:translateY(-50%) translateX(-50%) translateX(20%) translateY(-30%)}
+    40%{transform:translateY(-50%) translateX(-50%) translateX(-25%) translateY(-15%)}
+    60%{transform:translateY(-50%) translateX(-50%) translateX(30%) translateY(20%)}
+    80%{transform:translateY(-50%) translateX(-50%) translateX(5%) translateY(35%)}
+    to{transform:translateY(-50%) translateX(-50%) translateX(-15%) translateY(10%)}
+}
+
+.feature_3 {
+    width: 500px;
+    height: 500px;
+    z-index: -3;
+    left: 50%;
+    top: 50%;
+    animation-duration: 11s;
+    animation-name: keyframe_3;
+    position: absolute;
+    border-radius: 100%;
+    background: #7928ca;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.1,0,.9,1);
+}
+@keyframes animated-gradient-text_1 {
+    0%, 10%{opacity: 1}
+    20%, 100%{opacity: 0}
+}
+
+@keyframes animated-gradient-text_2 {
+    0%, 10%{opacity: 0}
+    to, 30%{opacity: 1}
+    40%, 100%{opacity: 0}
+}
+
+@keyframes animated-gradient-text_3 {
+    0%, 30%{opacity: 0}
+    to, 50%{opacity: 1}
+    60%, 100%{opacity: 0}
+}
+
+@keyframes animated-gradient-text_4 {
+    0%, 50%{opacity: 0}
+    to, 70%{opacity: 1}
+    80%, 100%{opacity: 0}
+}
+
+@keyframes animated-gradient-text_5 {
+    0%, 70%{opacity: 0}
+    to, 90%{opacity: 1}
+    100%{opacity: 0}
+}
+
+.animation_text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.animation_text_1 {
+    background-image: linear-gradient(90deg,#007CF0,#00DFD8);
+    animation: animated-gradient-text_1 15s infinite;
+}
+
+.animation_text_2 {
+    background-image: linear-gradient(90deg,#7928CA,#FF0080);
+    animation: animated-gradient-text_2 15s infinite;
+}
+
+.animation_text_3 {
+    background-image: linear-gradient(90deg,#FF4D4D,#F9CB28);
+    animation: animated-gradient-text_3 15s infinite;
+}
+
+.animation_text_4 {
+    background-image: linear-gradient(90deg,#007CF0,#00DFD8);
+    animation: animated-gradient-text_4 15s infinite;
+}
+
+.animation_text_5 {
+    background-image: linear-gradient(90deg,#7928CA,#FF0080);
+    animation: animated-gradient-text_5 15s infinite;
+}
+
+.text_back {
+    position: relative;
+    user-select: none;
+}
+
+.text_back::before {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: #000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.dark .text_back::before {
+    color: #fff;
+}
+
+@keyframes animated-gradient-text_fade-background-1 {
+    0%, 10%{opacity: 0}
+    20%, 100%{opacity: 1}
+}
+
+@keyframes animated-gradient-text_fade-background-2 {
+    0%, 10%{opacity: 1}
+    to, 30%{opacity: 0}
+    40%, 100%{opacity: 1}
+}
+
+@keyframes animated-gradient-text_fade-background-3 {
+    0%, 30%{opacity: 1}
+    to, 50%{opacity: 0}
+    60%, 100%{opacity: 1}
+}
+
+@keyframes animated-gradient-text_fade-background-4 {
+    0%, 50%{opacity: 1}
+    to, 70%{opacity: 0}
+    80%, 100%{opacity: 1}
+}
+
+@keyframes animated-gradient-text_fade-background-5 {
+    0%, 70%{opacity: 1}
+    to, 90%{opacity: 0}
+    100%{opacity: 1}
+}
+
+
+.text_back_1::before {
+    content: "Next.js,";
+    animation: animated-gradient-text_fade-background-1 15s infinite;
+}
+
+.text_back_2::before {
+    content: "Tailwind,";
+    animation: animated-gradient-text_fade-background-2 15s infinite;
+}
+
+.text_back_3::before {
+    content: "Prisma,";
+    animation: animated-gradient-text_fade-background-3 15s infinite;
+}
+
+.text_back_4::before {
+    content: "PostgreSQL,";
+    animation: animated-gradient-text_fade-background-4 15s infinite;
+}
+
+.text_back_5::before {
+    content: "Vercel.";
+    animation: animated-gradient-text_fade-background-5 15s infinite;
+}
+

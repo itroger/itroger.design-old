@@ -1,8 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Post } from '@prisma/client'
-import { prisma } from '@lib/prisma'
-import { Box, Card, Text } from '@mantine/core'
+import { prisma } from '@/lib/prisma'
 import { Viewer } from '@bytemd/react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -43,12 +42,12 @@ const PostDetail: React.FC<{ post: Post }> = props => {
   const { post } = props
 
   return (
-    <Box className="flex justify-center h-full p-2">
-      <Card className="max-w-3xl w-full shadow-lg bg-white">
-        <Text className="text-2xl font-semibold mb-2">{post.title}</Text>
+    <div className="flex justify-center h-full p-2">
+      <div className="max-w-3xl w-full shadow-lg bg-white">
+        <span className="text-2xl font-semibold mb-2">{post.title}</span>
         <Viewer value={post.content} />
-      </Card>
-    </Box>
+      </div>
+    </div>
   )
 }
 

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Post, Prisma } from '@prisma/client'
-import { prisma } from '@lib/prisma'
-import { Button, TextInput } from '@mantine/core'
-import { showNotification } from '@mantine/notifications'
+import { prisma } from '@/lib/prisma'
 import { Editor } from '@bytemd/react'
-import editor from '@utils/editor'
+import editor from '@/utils/editor'
 import axios from 'axios'
-import { getFiles, deleteFiles, uploadFile } from '@utils/files'
+import { Input, Button, message } from 'antd'
+import { getFiles, deleteFiles, uploadFile } from '@/utils/files'
 import 'bytemd/dist/index.min.css'
 import 'highlight.js/styles/github.css'
 
@@ -59,10 +58,10 @@ const PostEdit: React.FC<{ post: Post }> = props => {
 
   const handleEdit = async () => {
     if (!title) {
-      return showNotification({ message: '请输入文章标题' })
+      return message.warn('请输入文章标题')
     }
     if (!content) {
-      return showNotification({ message: '请编写文章' })
+      return message.warn('请输入文章内容')
     }
 
     await deleteFiles(files.filter(file => !getFiles().includes(file)))
@@ -74,8 +73,9 @@ const PostEdit: React.FC<{ post: Post }> = props => {
         content
       }
     )
+
     if (post) {
-      return showNotification({ message: '修改文章成功' })
+      message.success('修改文章成功')
     }
   }
 
@@ -84,20 +84,25 @@ const PostEdit: React.FC<{ post: Post }> = props => {
 
     await axios.delete<Post, Post, any>(`/api/post?id=${props.post.id}`)
 
-    showNotification({ message: '删除文章成功' })
+    await message.success('删除文章成功')
+
     await router.replace('/post/list')
   }
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="editor flex gap-4 p-2">
-        <TextInput
+    <div className="flex flex-col gap-2 h-full">
+      <div className="editor flex gap-2">
+        <Input
           className="flex-1 border-none"
           placeholder="输入文章标题..."
           defaultValue={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <Button className="bg-primary tracking-widest" onClick={handleEdit}>
+        <Button
+          type="primary"
+          className="bg-primary tracking-widest"
+          onClick={handleEdit}
+        >
           发布
         </Button>
         <Button className="bg-pink-400 tracking-widest" onClick={handleDelete}>

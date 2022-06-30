@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next'
 import { Post } from '@prisma/client'
-import { prisma } from '@lib/prisma'
-import session from '@utils/session'
+import { prisma } from '@/lib/prisma'
+import session from '@/utils/session'
 
 const post: NextApiHandler = async (req, res) => {
   await session(req, res)

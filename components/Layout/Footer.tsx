@@ -1,17 +1,19 @@
-import { Container, Text } from '@mantine/core'
-import Logos from '@components/Logos'
-import DarkMode from '@components/Layout/DarkMode'
+import Logos from '@/components/Logos'
+import DarkMode from '@/components/Layout/DarkMode'
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center items-center h-12 border-t border-zinc-300 dark:border-zinc-500">
-      <Container className="flex justify-between max-w-6xl w-full">
+    <footer className="flex justify-center items-center h-12 text-zinc-700 dark:text-zinc-400 bg-fa dark:bg-111 border-t border-zinc-300 dark:border-zinc-800 px-2">
+      <div className="flex justify-between max-w-6xl w-full">
         <div className="flex items-end gap-4">
-          <Logos.FaviconSvg />
-          <Text size="xs" color="dimmed">
-            © 2022 Designed by itroger
-          </Text>
+          <Link href="/">
+            <a className="w-6 h-6">
+              <Logos.FaviconSvg />
+            </a>
+          </Link>
+          <span>© 2022 Designed by itroger</span>
         </div>
         <div className="flex gap-2">
           <a
@@ -23,7 +25,7 @@ const Footer = () => {
           </a>
           <DarkMode />
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }
