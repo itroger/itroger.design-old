@@ -200,3 +200,17 @@
 .bytemd-toolbar-icon:last-child {
     display: none;
 }
+
+.dark .bytemd-toolbar-icon:hover {
+    background-color: #000;
+}
+
+.dark .bytemd, .dark .bytemd-toolbar, .dark .CodeMirror, .dark .bytemd-status, .dark .bytemd-split .bytemd-preview {
+    color: white;
+    border-color: #666;
+    background-color: #27272a;
+}
+
+.dark .markdown-body {
+    color: white;
+}

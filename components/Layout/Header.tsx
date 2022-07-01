@@ -11,7 +11,7 @@ const Header = () => {
   const { data: session } = useSession()
 
   return (
-    <div className="sticky top-0 flex justify-center items-center h-16 bg-white dark:bg-zinc-900 px-2">
+    <div className="sticky z-50 top-0 flex justify-center items-center h-16 bg-white dark:bg-zinc-900 px-2">
       <div className="flex items-center gap-4 max-w-6xl w-full">
         <Link href="/">
           <a className="flex items-center gap-2">
@@ -54,7 +54,7 @@ const Header = () => {
                   {session.user.name}
                 </span>
               </Menu.Button>
-              <Menu.Items className="absolute z-50 right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <Menu.Item>
                   {({ active }) => (
                     <button

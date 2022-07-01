@@ -1,6 +1,6 @@
 const Index = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-4 h-full">
+    <div className="flex flex-col justify-center items-center gap-8 h-full">
       <h1 className="mb-4 font-sans font-bold text-6xl md:text-8xl text-center text-black dark:text-white">
         FullStack
       </h1>

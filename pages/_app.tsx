@@ -7,7 +7,6 @@ import { SessionProvider } from 'next-auth/react'
 import Layout from '@/components/Layout'
 import Auth from '@/components/Auth'
 import '@/styles/globals.css'
-import '@/styles/antd.css'
 import '@/styles/juejin.css'
 import '@/styles/animation.css'
 

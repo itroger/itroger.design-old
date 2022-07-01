@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
+import { useSession } from 'next-auth/react'
 import { Post } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
-import { Button } from 'antd'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
@@ -16,21 +16,30 @@ export const getServerSideProps: GetServerSideProps = async () => {
 const Post: React.FC<{ posts: Post[] }> = props => {
   const { posts } = props
 
+  const { data: session } = useSession()
+
   return (
-    <div className="flex flex-col p-4 gap-4">
-      <Button type="primary">
-        <Link href="/post/create">新增文章</Link>
-      </Button>
+    <div className="flex flex-col gap-4 p-4">
+      {session && (
+        <Link href="/post/create">
+          <a className="py-2 font-semibold text-center text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded">
+            新增文章
+          </a>
+        </Link>
+      )}
       <div className="flex flex-col gap-2">
         {posts.map(post => (
           <Link key={post.id} href={`/post/${post.id}`}>
-            <div key={post.id}>
-              <span>
+            <a
+              key={post.id}
+              className="flex flex-col gap-2 p-4 rounded border border-zinc-800 dark:border-zinc-400 hover:shadow-xl"
+            >
+              <span className="text-sm text-zinc-500 dark:text-zinc-300">
                 {post.username} |{' '}
                 {new Date(post.updatedAt).toISOString().split('T')[0]}
               </span>
-              <span>{post.title}</span>
-            </div>
+              <span className="text-lg">{post.title}</span>
+            </a>
           </Link>
         ))}
       </div>

@@ -7,9 +7,6 @@
     bottom: 0;
     overflow: hidden;
     filter: blur(100px);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     pointer-events: none;
 }

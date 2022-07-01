@@ -6,7 +6,6 @@ import { prisma } from '@/lib/prisma'
 import { Editor } from '@bytemd/react'
 import editor from '@/utils/editor'
 import axios from 'axios'
-import { Input, Button, message } from 'antd'
 import { getFiles, deleteFiles, uploadFile } from '@/utils/files'
 import 'bytemd/dist/index.min.css'
 import 'highlight.js/styles/github.css'
@@ -58,10 +57,10 @@ const PostEdit: React.FC<{ post: Post }> = props => {
 
   const handleEdit = async () => {
     if (!title) {
-      return message.warn('请输入文章标题')
+      return
     }
     if (!content) {
-      return message.warn('请输入文章内容')
+      return
     }
 
     await deleteFiles(files.filter(file => !getFiles().includes(file)))
@@ -73,10 +72,6 @@ const PostEdit: React.FC<{ post: Post }> = props => {
         content
       }
     )
-
-    if (post) {
-      message.success('修改文章成功')
-    }
   }
 
   const handleDelete = async () => {
@@ -84,30 +79,30 @@ const PostEdit: React.FC<{ post: Post }> = props => {
 
     await axios.delete<Post, Post, any>(`/api/post?id=${props.post.id}`)
 
-    await message.success('删除文章成功')
-
     await router.replace('/post/list')
   }
 
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="editor flex gap-2">
-        <Input
-          className="flex-1 border-none"
+        <input
+          className="outline-none flex-1 px-2 dark:text-zinc-200 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
           placeholder="输入文章标题..."
           defaultValue={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <Button
-          type="primary"
-          className="bg-primary tracking-widest"
+        <button
+          className="px-4 py-1 text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded"
           onClick={handleEdit}
         >
           发布
-        </Button>
-        <Button className="bg-pink-400 tracking-widest" onClick={handleDelete}>
+        </button>
+        <button
+          className="px-4 py-1 text-white dark:text-white hover:text-black hover:dark:text-black bg-red-400 border border-red-400 hover:bg-white rounded"
+          onClick={handleDelete}
+        >
           删除
-        </Button>
+        </button>
       </div>
       <Editor
         locale={editor.locale}

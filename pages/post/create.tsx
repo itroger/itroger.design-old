@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { Prisma, Post } from '@prisma/client'
 import { Editor } from '@bytemd/react'
-import { Input, Button, message } from 'antd'
 import axios from 'axios'
 import editor from '@/utils/editor'
 import { uploadFile, getFiles, deleteFiles } from '@/utils/files'
@@ -18,10 +17,10 @@ const PostCreate = () => {
 
   const handlePublish = async () => {
     if (!title) {
-      return message.warn('请输入文章标题')
+      return
     }
     if (!content) {
-      return message.warn('请输入文章内容')
+      return
     }
 
     await deleteFiles(files.filter(file => !getFiles().includes(file)))
@@ -36,23 +35,22 @@ const PostCreate = () => {
         username: session.user.name
       }
     )
-
-    if (post) {
-      message.success('创建文章成功')
-    }
   }
 
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="editor flex gap-2">
-        <Input
-          className="flex-1 border-none"
+        <input
+          className="outline-none flex-1 px-2 dark:text-zinc-200 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
           placeholder="输入文章标题..."
           onChange={e => setTitle(e.target.value)}
         />
-        <Button type="primary" className="bg-primary" onClick={handlePublish}>
+        <button
+          className="px-4 py-1 text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded"
+          onClick={handlePublish}
+        >
           发布
-        </Button>
+        </button>
       </div>
       <Editor
         placeholder="编辑文章..."
