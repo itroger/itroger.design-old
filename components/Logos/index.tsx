@@ -6,6 +6,7 @@ import PrismaSvg from '@/components/Logos/PrismaSvg'
 import GithubSvg from '@/components/Logos/GithubSvg'
 import LightSvg from '@/components/Logos/LightSvg'
 import DarkSvg from '@/components/Logos/DarkSvg'
+import PostgreSvg from '@/components/Logos/PostgreSvg'
 import VercelSvg from '@/components/Logos/VercelSvg'
 import FaviconSvg from '@/components/Logos/FaviconSvg'
 
@@ -18,6 +19,7 @@ const Logos = {
   GithubSvg,
   LightSvg,
   DarkSvg,
+  PostgreSvg,
   VercelSvg,
   FaviconSvg
 }

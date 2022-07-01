@@ -86,7 +86,7 @@ model Example {
   href      String   @unique
   src       String   @unique @db.VarChar(300)
   userId    Int      @map("user_id")
-  usename   String
+  username  String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

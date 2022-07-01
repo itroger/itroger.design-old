@@ -1,3 +1,5 @@
+import Logos from '@/components/Logos'
+
 const Index = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-8 h-full">
@@ -24,6 +26,13 @@ const Index = () => {
       <button className="px-10 py-3 font-semibold text-base text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-zinc-100 hover:dark:bg-zinc-800 rounded">
         Get Started
       </button>
+      <div className="mt-10 flex items-center gap-4 md:gap-8">
+        <Logos.NextSvg className="text-black" />
+        <Logos.TailwindSvg style={{ color: '#38bdf8' }} />
+        <Logos.PrismaSvg />
+        <Logos.PostgreSvg />
+        <Logos.VercelSvg className="text-black" />
+      </div>
     </div>
   )
 }

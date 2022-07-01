@@ -86,7 +86,7 @@ const PostEdit: React.FC<{ post: Post }> = props => {
     <div className="flex flex-col gap-2 h-full">
       <div className="editor flex gap-2">
         <input
-          className="outline-none flex-1 px-2 dark:text-zinc-200 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
+          className="appearance-none outline-none flex-1 px-2 dark:text-zinc-200 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
           placeholder="输入文章标题..."
           defaultValue={title}
           onChange={e => setTitle(e.target.value)}
