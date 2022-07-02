@@ -20,6 +20,8 @@ const PostList: React.FC<{ posts: Post[] }> = props => {
       <thead>
         <tr>
           <th className="border-b border-slate-300 py-2">标题</th>
+          <th className="border-b border-slate-300 py-2">作者</th>
+          <th className="border-b border-slate-300 py-2">时间</th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +29,16 @@ const PostList: React.FC<{ posts: Post[] }> = props => {
           <tr key={post.id}>
             <td className="border-b border-slate-300">
               <Link href={`/post/edit/${post.id}`}>
-                <a className="block w-full h-full p-2">{post.title}</a>
+                <a className="text-center block w-full h-full p-2">
+                  <span>{post.title}</span>
+                </a>
               </Link>
+            </td>
+            <td className="text-center border-b border-slate-300">
+              {post.username}
+            </td>
+            <td className="text-center border-b border-slate-300">
+              {new Date(post.updatedAt).toISOString().split('T')[0]}
             </td>
           </tr>
         ))}

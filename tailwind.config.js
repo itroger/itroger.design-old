@@ -20,6 +20,9 @@ module.exports = {
       },
       backdropSaturate: {
         180: '180%'
+      },
+      boxSizing: {
+        inherit: 'inherit'
       }
     }
   },

@@ -9,6 +9,10 @@ import DarkSvg from '@/components/Logos/DarkSvg'
 import PostgreSvg from '@/components/Logos/PostgreSvg'
 import VercelSvg from '@/components/Logos/VercelSvg'
 import FaviconSvg from '@/components/Logos/FaviconSvg'
+import JavaScriptSvg from '@/components/Logos/JavaScriptSvg'
+import TypeScriptSvg from '@/components/Logos/TypeScriptSvg'
+import SupabaseSvg from '@/components/Logos/SupabaseSvg'
+import GitSvg from '@/components/Logos/GitSvg'
 
 const Logos = {
   NextJsSvg,
@@ -21,7 +25,11 @@ const Logos = {
   DarkSvg,
   PostgreSvg,
   VercelSvg,
-  FaviconSvg
+  FaviconSvg,
+  JavaScriptSvg,
+  TypeScriptSvg,
+  SupabaseSvg,
+  GitSvg
 }
 
 export default Logos
