@@ -29,7 +29,6 @@
     animation-name: keyframe_1;
     position: absolute;
     border-radius: 100%;
-    background-color: #ff0080;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(.1,0,.9,1);
 }
@@ -53,7 +52,6 @@
     animation-direction: reverse;
     position: absolute;
     border-radius: 100%;
-    background: #50e3c2;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(.1,0,.9,1);
 }
@@ -77,7 +75,6 @@
     animation-name: keyframe_3;
     position: absolute;
     border-radius: 100%;
-    background: #7928ca;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(.1,0,.9,1);
 }

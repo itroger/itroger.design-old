@@ -11,6 +11,15 @@ module.exports = {
         fa: '#fafafa',
         111: '#111111',
         666: '#666666'
+      },
+      fontFamily: {
+        georgia: ['Georgia', 'sans']
+      },
+      backdropBlur: {
+        5: '5px'
+      },
+      backdropSaturate: {
+        180: '180%'
       }
     }
   },

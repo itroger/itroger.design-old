@@ -11,7 +11,7 @@ const Header = () => {
   const { data: session } = useSession()
 
   return (
-    <div className="sticky z-50 top-0 flex justify-center items-center h-16 bg-white dark:bg-zinc-900 px-2">
+    <div className="sticky z-50 top-0 flex justify-center items-center h-16 px-2 backdrop-saturate-180 backdrop-blur-5">
       <div className="flex items-center gap-4 max-w-6xl w-full">
         <Link href="/">
           <a className="flex items-center gap-2">
@@ -54,13 +54,15 @@ const Header = () => {
                   {session.user.name}
                 </span>
               </Menu.Button>
-              <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 mt-2 w-40 bg-white dark:bg-zinc-900 rounded-md backdrop-saturate-180 backdrop-blur-5 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <Menu.Item>
                   {({ active }) => (
                     <button
                       onClick={() => router.push(`/user/${session.user.id}`)}
                       className={`${
-                        active ? 'bg-primary text-white' : 'text-gray-900'
+                        active
+                          ? 'bg-zinc-100 dark:bg-zinc-800 dark:text-white'
+                          : 'text-gray-900 dark:text-gray-200'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       我的主页
@@ -72,7 +74,9 @@ const Header = () => {
                     <button
                       onClick={() => signOut()}
                       className={`${
-                        active ? 'bg-primary text-white' : 'text-gray-900'
+                        active
+                          ? 'bg-zinc-100 dark:bg-zinc-800 dark:text-white'
+                          : 'text-gray-900 dark:text-gray-200'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       登出

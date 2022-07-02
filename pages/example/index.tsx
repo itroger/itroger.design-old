@@ -27,13 +27,18 @@ const Example: React.FC<{ examples: Example[] }> = props => {
           </a>
         </Link>
       )}
-      {examples.map(example => (
-        <div key={example.text} className="p-4 border">
-          <Link href={`/example/${example.category}/${example.href}`}>
-            <a>{example.text}</a>
+      <div className="flex flex-col gap-2">
+        {examples.map(example => (
+          <Link
+            key={example.text}
+            href={`/example/${example.category}/${example.href}`}
+          >
+            <a className="flex flex-col gap-2 p-4 rounded border border-zinc-800 dark:border-zinc-400 hover:shadow-xl">
+              {example.text}
+            </a>
           </Link>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

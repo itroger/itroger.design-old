@@ -3,7 +3,7 @@ import Logos from '@/components/Logos'
 const Index = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-8 h-full">
-      <h1 className="mb-4 font-sans font-bold text-6xl md:text-8xl text-center text-black dark:text-white">
+      <h1 className="mb-4 font-georgia font-bold text-6xl md:text-8xl text-center text-black dark:text-white">
         FullStack
       </h1>
       <p className="flex justify-center gap-2 flex-wrap text-center text-2xl md:text-3xl text-white">

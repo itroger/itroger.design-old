@@ -205,10 +205,14 @@
     background-color: #000;
 }
 
+.bytemd, .bytemd-toolbar, .CodeMirror, .bytemd-status, .bytemd-split {
+    background-color: transparent !important;
+}
+
 .dark .bytemd, .dark .bytemd-toolbar, .dark .CodeMirror, .dark .bytemd-status, .dark .bytemd-split .bytemd-preview {
     color: white;
     border-color: #666;
-    background-color: #27272a;
+    /*background-color: #27272a;*/
 }
 
 .dark .markdown-body {

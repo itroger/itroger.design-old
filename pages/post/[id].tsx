@@ -43,7 +43,7 @@ const PostDetail: React.FC<{ post: Post }> = props => {
 
   return (
     <div className="flex justify-center h-full p-2">
-      <div className="max-w-5xl w-full px-8 py-4 rounded shadow-lg shadow-teal-900">
+      <div className="max-w-5xl w-full px-8 py-4 rounded shadow backdrop-saturate-180 backdrop-blur-5">
         <h2 className="text-2xl text-center font-semibold mb-2">
           {post.title}
         </h2>

@@ -23,6 +23,8 @@ export const getStaticProps: GetStaticProps = async context => {
     where: { href: String(params.id) }
   })
 
+  console.log(example)
+
   if (example) {
     return {
       props: {
