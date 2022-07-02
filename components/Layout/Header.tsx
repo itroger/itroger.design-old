@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="sticky z-50 top-0 flex justify-center items-center h-16 px-2 backdrop-saturate-180 backdrop-blur-5">
-      <div className="flex items-center gap-4 max-w-6xl w-full">
+      <div className="relative flex justify-between items-center gap-4 max-w-7xl w-full">
         <Link href="/">
           <a className="flex items-center gap-2">
             <span className="w-8 h-8">
@@ -23,7 +23,7 @@ const Header = () => {
             </span>
           </a>
         </Link>
-        <div className="flex-1 flex justify-center items-center items-end gap-4">
+        <div className="md:absolute md:w-full flex justify-center items-center items-end gap-4">
           {menus.map(menu => (
             <Link key={menu.href} href={menu.href}>
               <a

@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
               : colors[1]
           }
         />
-        <div className="relative max-w-6xl w-full">{children}</div>
+        <div className="relative max-w-7xl w-full">{children}</div>
       </main>
       <Footer />
     </div>

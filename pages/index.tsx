@@ -23,7 +23,7 @@ const Index = () => {
           <span className="animation_text animation_text_5">Vercel.</span>
         </span>
       </p>
-      <button className="px-10 py-3 font-semibold text-base text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-zinc-100 hover:dark:bg-zinc-800 rounded">
+      <button className="px-10 py-3 font-semibold text-base text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-zinc-100 hover:dark:bg-zinc-800 rounded focus:ring">
         Get Started
       </button>
       <div className="mt-10 flex items-center gap-4 md:gap-8">
