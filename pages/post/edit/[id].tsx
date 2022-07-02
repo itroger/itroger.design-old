@@ -92,7 +92,7 @@ const PostEdit: React.FC<{ post: Post }> = props => {
           onChange={e => setTitle(e.target.value)}
         />
         <button
-          className="px-4 py-1 text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded"
+          className="px-4 py-1 text-white dark:text-black hover:text-black hover:dark:text-white bg-black dark:bg-white border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded"
           onClick={handleEdit}
         >
           发布

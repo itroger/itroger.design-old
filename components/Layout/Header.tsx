@@ -14,7 +14,7 @@ const Header = () => {
     <div className="sticky z-50 top-0 flex justify-center items-center h-16 px-2 backdrop-saturate-180 backdrop-blur-5">
       <div className="relative flex justify-between items-center gap-4 max-w-7xl w-full">
         <Link href="/">
-          <a className="flex items-center gap-2">
+          <a className="md:z-50 flex items-center gap-2">
             <span className="w-8 h-8">
               <Logos.FaviconSvg />
             </span>
@@ -23,7 +23,7 @@ const Header = () => {
             </span>
           </a>
         </Link>
-        <div className="md:absolute md:w-full flex justify-center items-center items-end gap-4">
+        <div className="md:absolute md:z-40 md:w-full flex justify-center items-center items-end gap-4">
           {menus.map(menu => (
             <Link key={menu.href} href={menu.href}>
               <a
@@ -39,7 +39,7 @@ const Header = () => {
             </Link>
           ))}
         </div>
-        <div className="flex gap-4">
+        <div className="md:z-50 flex gap-4">
           {session ? (
             <Menu as="div" className="relative inline-block text-left">
               <Menu.Button className="inline-flex w-full justify-center items-center gap-2 bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">

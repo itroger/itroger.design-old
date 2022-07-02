@@ -21,11 +21,18 @@ const Post: React.FC<{ posts: Post[] }> = props => {
   return (
     <div className="flex flex-col gap-4 p-4">
       {session && (
-        <Link href="/post/create">
-          <a className="py-2 font-semibold text-center text-white dark:text-black hover:text-black hover:dark:text-white bg-zinc-900 dark:bg-zinc-100 border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded">
-            新增文章
-          </a>
-        </Link>
+        <div className="flex gap-4">
+          <Link href="/post/create">
+            <a className="flex-1 py-2 font-semibold text-center text-white dark:text-black hover:text-black hover:dark:text-white bg-black dark:bg-white border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded">
+              新增文章
+            </a>
+          </Link>
+          <Link href="/post/list">
+            <a className="flex-1 py-2 font-semibold text-center text-black dark:text-white hover:text-white hover:dark:text-black bg-white dark:bg-black border border-black dark:border-white hover:bg-black hover:dark:bg-white rounded">
+              文章管理
+            </a>
+          </Link>
+        </div>
       )}
       <div className="flex flex-col gap-2">
         {posts.map(post => (
