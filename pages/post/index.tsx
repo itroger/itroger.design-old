@@ -4,6 +4,7 @@ import { GetServerSideProps } from 'next'
 import { useSession } from 'next-auth/react'
 import { Post } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
+import format from '@/utils/date'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
@@ -42,8 +43,7 @@ const Post: React.FC<{ posts: Post[] }> = props => {
               className="flex flex-col gap-2 p-4 rounded border border-zinc-800 dark:border-zinc-400 hover:shadow-xl"
             >
               <span className="text-sm text-zinc-500 dark:text-zinc-300">
-                {post.username} |{' '}
-                {new Date(post.updatedAt).toISOString().split('T')[0]}
+                {post.username} | {format(post.updatedAt)}
               </span>
               <span className="text-lg">{post.title}</span>
             </a>

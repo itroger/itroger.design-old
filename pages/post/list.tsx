@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { Post } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
+import format from '@/utils/date'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
@@ -38,7 +39,7 @@ const PostList: React.FC<{ posts: Post[] }> = props => {
               {post.username}
             </td>
             <td className="text-center border-b border-slate-300">
-              {new Date(post.updatedAt).toISOString().split('T')[0]}
+              {format(post.updatedAt)}
             </td>
           </tr>
         ))}
