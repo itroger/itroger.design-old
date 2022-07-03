@@ -5,14 +5,25 @@ const stacks = [
   { text: 'JavaScript', logo: <Logos.JavaScriptSvg className="w-8 h-8" /> },
   { text: 'TypeScript', logo: <Logos.TypeScriptSvg className="w-8 h-8" /> },
   { text: 'Tailwind', logo: <Logos.TailwindSvg className="w-8 h-8" /> },
-  { text: 'PostgreSQL', logo: <Logos.PostgreSvg className="w-8 h-8" /> },
-  { text: 'Prisma', logo: <Logos.PrismaSvg className="w-8 h-8" /> },
-  { text: 'Supabase', logo: <Logos.SupabaseSvg className="w-8 h-8" /> },
   { text: 'ReactJS', logo: <Logos.ReactSvg className="w-8 h-8" /> },
   { text: 'NextJS', logo: <Logos.NextJsSvg className="w-8 h-8" /> },
+  {
+    text: 'NextAuth',
+    logo: (
+      <Image
+        src="/logos/next-auth.png"
+        width={29}
+        height={32}
+        alt="next-auth"
+      />
+    )
+  },
+  { text: 'Prisma', logo: <Logos.PrismaSvg className="w-8 h-8" /> },
+  { text: 'Supabase', logo: <Logos.SupabaseSvg className="w-8 h-8" /> },
+  { text: 'PostgreSQL', logo: <Logos.PostgreSvg className="w-8 h-8" /> },
   { text: 'Vercel', logo: <Logos.VercelSvg className="w-8 h-8" /> },
-  { text: 'Github', logo: <Logos.GithubSvg className="w-8 h-8" /> },
-  { text: 'Git', logo: <Logos.GitSvg className="w-8 h-8" /> }
+  { text: 'Git', logo: <Logos.GitSvg className="w-8 h-8" /> },
+  { text: 'Github', logo: <Logos.GithubSvg className="w-8 h-8" /> }
 ]
 
 const graduates = [
@@ -39,7 +50,6 @@ const About = () => {
             </span>
           </div>
         ))}
-        <div className="hidden md:block md:w-52" />
         <div className="hidden md:block md:w-52" />
         <div className="hidden md:block md:w-52" />
         <div className="hidden md:block md:w-52" />
