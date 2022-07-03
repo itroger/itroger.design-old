@@ -13,6 +13,8 @@ import JavaScriptSvg from '@/components/Logos/JavaScriptSvg'
 import TypeScriptSvg from '@/components/Logos/TypeScriptSvg'
 import SupabaseSvg from '@/components/Logos/SupabaseSvg'
 import GitSvg from '@/components/Logos/GitSvg'
+import MiniSvg from '@/components/Logos/MiniSvg'
+import NodeSvg from '@/components/Logos/NodeSvg'
 
 const Logos = {
   NextJsSvg,
@@ -29,7 +31,9 @@ const Logos = {
   JavaScriptSvg,
   TypeScriptSvg,
   SupabaseSvg,
-  GitSvg
+  GitSvg,
+  MiniSvg,
+  NodeSvg
 }
 
 export default Logos

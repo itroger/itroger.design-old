@@ -26,6 +26,21 @@ const stacks = [
   { text: 'Github', logo: <Logos.GithubSvg className="w-8 h-8" /> }
 ]
 
+const platforms = [
+  {
+    text: 'Web',
+    logo: <Image src="/logos/web.png" width={29} height={32} alt="web" />
+  },
+  {
+    text: 'Mini',
+    logo: <Logos.MiniSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Node',
+    logo: <Logos.NodeSvg className="w-8 h-8" />
+  }
+]
+
 const graduates = [
   { text: '软件工程•硕士', logo: '/logos/sysu.gif' },
   { text: '计算机科学与技术•本科', logo: '/logos/lit.gif' }
@@ -33,47 +48,67 @@ const graduates = [
 
 const About = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       <h1 className="text-center text-3xl md:text-5xl p-4 md:py-20">
         Creative Web Designer & Developer
       </h1>
-      <h2 className="font-georgia text-3xl text-center mb-4">FullStack</h2>
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8 p-4">
-        {stacks.map(stack => (
-          <div
-            key={stack.text}
-            className="flex items-center gap-4 border border-gray-400 dark:border-gray-700 dark:border-white md:w-52 p-4 rounded-md cursor-pointer hover:bg-indigo-50 hover:dark:bg-gray-900 hover:border-primary hover:ring-1 hover:ring-primary"
-          >
-            {stack.logo}
-            <span className="text-lg font-semibold text-gray-700 dark:text-gray-400">
-              {stack.text}
-            </span>
-          </div>
-        ))}
-        <div className="hidden md:block md:w-52" />
-        <div className="hidden md:block md:w-52" />
-        <div className="hidden md:block md:w-52" />
-      </div>
-      <h2 className="font-georgia text-3xl text-center mb-4">Graduate</h2>
-      <div className="relative flex flex-col md:flex-row items-center justify-center gap-8 p-4">
-        {graduates.map(graduate => (
-          <div
-            key={graduate.text}
-            className="flex flex-col gap-4 w-full md:w-56 p-4 hover:bg-gray-100 hover:scale-110 cursor-pointer rounded-xl shadow backdrop-saturate-180 backdrop-blur-5"
-          >
-            <div className="flex justify-center">
-              <Image
-                src={graduate.logo}
-                width={100}
-                height={100}
-                alt={graduate.text}
-              />
+      <div className="flex flex-col gap-2">
+        <h2 className="font-georgia text-3xl text-center">FullStack</h2>
+        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8 p-4">
+          {stacks.map(stack => (
+            <div
+              key={stack.text}
+              className="flex items-center gap-4 border border-gray-400 dark:border-gray-700 dark:border-white md:w-52 p-4 rounded-md cursor-pointer hover:bg-indigo-50 hover:dark:bg-gray-900 hover:border-primary hover:ring-1 hover:ring-primary"
+            >
+              {stack.logo}
+              <span className="text-lg font-semibold text-gray-700 dark:text-gray-400">
+                {stack.text}
+              </span>
             </div>
-            <span className="text-center font-semibold text-gray-700 dark:text-gray-400">
-              {graduate.text}
-            </span>
-          </div>
-        ))}
+          ))}
+          <div className="hidden md:block md:w-52" />
+          <div className="hidden md:block md:w-52" />
+          <div className="hidden md:block md:w-52" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <h2 className="font-georgia text-3xl text-center">Platform</h2>
+        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8 p-4">
+          {platforms.map(platform => (
+            <div
+              key={platform.text}
+              className="flex items-center gap-4 border border-gray-400 dark:border-gray-700 dark:border-white md:w-52 p-4 rounded-md cursor-pointer hover:bg-indigo-50 hover:dark:bg-gray-900 hover:border-primary hover:ring-1 hover:ring-primary"
+            >
+              {platform.logo}
+              <span className="text-lg font-semibold text-gray-700 dark:text-gray-400">
+                {platform.text}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <h2 className="font-georgia text-3xl text-center">Graduate</h2>
+        <div className="relative flex flex-col md:flex-row items-center justify-center gap-8 p-4">
+          {graduates.map(graduate => (
+            <div
+              key={graduate.text}
+              className="flex flex-col gap-4 w-full md:w-56 p-4 hover:bg-gray-100 hover:scale-110 cursor-pointer rounded-xl shadow backdrop-saturate-180 backdrop-blur-5"
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={graduate.logo}
+                  width={100}
+                  height={100}
+                  alt={graduate.text}
+                />
+              </div>
+              <span className="text-center font-semibold text-gray-700 dark:text-gray-400">
+                {graduate.text}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
