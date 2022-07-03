@@ -2,13 +2,34 @@ import Logos from '@/components/Logos'
 import Image from 'next/image'
 
 const stacks = [
-  { text: 'JavaScript', logo: <Logos.JavaScriptSvg className="w-8 h-8" /> },
-  { text: 'TypeScript', logo: <Logos.TypeScriptSvg className="w-8 h-8" /> },
-  { text: 'Tailwind', logo: <Logos.TailwindSvg className="w-8 h-8" /> },
-  { text: 'ReactJS', logo: <Logos.ReactSvg className="w-8 h-8" /> },
-  { text: 'NextJS', logo: <Logos.NextJsSvg className="w-8 h-8" /> },
+  {
+    text: 'JavaScript',
+    href: 'https://www.w3schools.com/js/',
+    logo: <Logos.JavaScriptSvg className="w-8 h-8" />
+  },
+  {
+    text: 'TypeScript',
+    href: 'https://www.typescriptlang.org/',
+    logo: <Logos.TypeScriptSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Tailwind',
+    href: 'https://tailwindcss.com/',
+    logo: <Logos.TailwindSvg className="w-8 h-8" />
+  },
+  {
+    text: 'ReactJS',
+    href: 'https://beta.reactjs.org/',
+    logo: <Logos.ReactSvg className="w-8 h-8" />
+  },
+  {
+    text: 'NextJS',
+    href: 'https://nextjs.org/',
+    logo: <Logos.NextJsSvg className="w-8 h-8" />
+  },
   {
     text: 'NextAuth',
+    href: 'https://next-auth.js.org/',
     logo: (
       <Image
         src="/logos/next-auth.png"
@@ -18,25 +39,52 @@ const stacks = [
       />
     )
   },
-  { text: 'Prisma', logo: <Logos.PrismaSvg className="w-8 h-8" /> },
-  { text: 'Supabase', logo: <Logos.SupabaseSvg className="w-8 h-8" /> },
-  { text: 'PostgreSQL', logo: <Logos.PostgreSvg className="w-8 h-8" /> },
-  { text: 'Vercel', logo: <Logos.VercelSvg className="w-8 h-8" /> },
-  { text: 'Git', logo: <Logos.GitSvg className="w-8 h-8" /> },
-  { text: 'Github', logo: <Logos.GithubSvg className="w-8 h-8" /> }
+  {
+    text: 'Prisma',
+    href: 'https://prisma.io/',
+    logo: <Logos.PrismaSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Supabase',
+    href: 'https://supabase.com/',
+    logo: <Logos.SupabaseSvg className="w-8 h-8" />
+  },
+  {
+    text: 'PostgreSQL',
+    href: 'https://www.postgresql.org/',
+    logo: <Logos.PostgreSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Vercel',
+    href: 'https://vercel.com/',
+    logo: <Logos.VercelSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Git',
+    href: 'https://git-scm.com/',
+    logo: <Logos.GitSvg className="w-8 h-8" />
+  },
+  {
+    text: 'Github',
+    href: 'https://github.com/',
+    logo: <Logos.GithubSvg className="w-8 h-8" />
+  }
 ]
 
 const platforms = [
   {
     text: 'Web',
+    href: 'https://developer.mozilla.org/zh-CN/docs/Web/Tutorials',
     logo: <Image src="/logos/web.png" width={29} height={32} alt="web" />
   },
   {
     text: 'Mini',
+    href: 'https://developers.weixin.qq.com/miniprogram/dev/framework/',
     logo: <Logos.MiniSvg className="w-8 h-8" />
   },
   {
     text: 'Node',
+    href: 'https://nodejs.org/',
     logo: <Logos.NodeSvg className="w-8 h-8" />
   }
 ]
@@ -56,15 +104,18 @@ const About = () => {
         <h2 className="font-georgia text-3xl text-center">FullStack</h2>
         <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8 p-4">
           {stacks.map(stack => (
-            <div
+            <a
               key={stack.text}
+              href={stack.href}
+              target="_blank"
+              rel="noreferrer"
               className="flex items-center gap-4 border border-gray-400 dark:border-gray-700 dark:border-white md:w-52 p-4 rounded-md cursor-pointer hover:bg-indigo-50 hover:dark:bg-gray-900 hover:border-primary hover:ring-1 hover:ring-primary"
             >
               {stack.logo}
               <span className="text-lg font-semibold text-gray-700 dark:text-gray-400">
                 {stack.text}
               </span>
-            </div>
+            </a>
           ))}
           <div className="hidden md:block md:w-52" />
           <div className="hidden md:block md:w-52" />
@@ -75,15 +126,18 @@ const About = () => {
         <h2 className="font-georgia text-3xl text-center">Platform</h2>
         <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8 p-4">
           {platforms.map(platform => (
-            <div
+            <a
               key={platform.text}
+              href={platform.href}
+              target="_blank"
+              rel="noreferrer"
               className="flex items-center gap-4 border border-gray-400 dark:border-gray-700 dark:border-white md:w-52 p-4 rounded-md cursor-pointer hover:bg-indigo-50 hover:dark:bg-gray-900 hover:border-primary hover:ring-1 hover:ring-primary"
             >
               {platform.logo}
               <span className="text-lg font-semibold text-gray-700 dark:text-gray-400">
                 {platform.text}
               </span>
-            </div>
+            </a>
           ))}
         </div>
       </div>

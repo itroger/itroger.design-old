@@ -1,0 +1,28 @@
+.editor + div {
+    flex: 1;
+}
+
+.editor + div > .bytemd {
+    height: 100%;
+}
+
+.bytemd-toolbar-icon:last-child {
+    display: none;
+}
+
+.dark .bytemd-toolbar-icon:hover {
+    background-color: #000;
+}
+
+.bytemd, .bytemd-toolbar, .CodeMirror, .bytemd-status, .bytemd-split {
+    background-color: transparent !important;
+}
+
+.dark .bytemd, .dark .bytemd-toolbar, .dark .CodeMirror, .dark .bytemd-status, .dark .bytemd-split .bytemd-preview {
+    color: white;
+    border-color: #666;
+}
+
+.dark .markdown-body {
+    color: white;
+}

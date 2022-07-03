@@ -7,8 +7,10 @@ import { SessionProvider } from 'next-auth/react'
 import Layout from '@/components/Layout'
 import Auth from '@/components/Auth'
 import '@/styles/globals.css'
-import '@/styles/juejin.css'
+import '@/styles/bytemd.css'
 import '@/styles/animation.css'
+import '@/styles/vue.css'
+import '@/styles/vue-dark.css'
 
 interface AppProps {
   Component: NextComponentType
@@ -27,7 +29,7 @@ const App: React.FC<AppProps> = props => {
     <SessionProvider session={session}>
       <Layout>
         <Head>
-          <title>itroger.design</title>
+          <title>凡心所向</title>
           <link rel="icon" href="/favicon.svg" type="image/svg" />
         </Head>
         {router.asPath
