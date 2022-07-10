@@ -1,7 +1,13 @@
-import Logos from '@/components/Logos'
-import DarkMode from '@/components/Layout/DarkMode'
 import React from 'react'
 import Link from 'next/link'
+import Logos from '@/components/Logos'
+
+declare global {
+  interface Window {
+    __theme: string
+    __setPreferredTheme: (theme: string) => void
+  }
+}
 
 const Footer = () => {
   return (
@@ -23,7 +29,14 @@ const Footer = () => {
           >
             <Logos.GithubSvg />
           </a>
-          <DarkMode />
+          <a className="hidden dark:block">
+            <Logos.LightSvg
+              onClick={() => window.__setPreferredTheme('light')}
+            />
+          </a>
+          <a className="block dark:hidden">
+            <Logos.DarkSvg onClick={() => window.__setPreferredTheme('dark')} />
+          </a>
         </div>
       </div>
     </footer>

@@ -2,7 +2,7 @@ const DarkSvg = (p: JSX.IntrinsicElements['svg']) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
-    className="w-6 h-6 cursor-pointer"
+    className={`w-6 h-6 cursor-pointer`}
     {...p}
   >
     <path

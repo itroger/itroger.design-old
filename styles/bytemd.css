@@ -18,6 +18,15 @@
     background-color: transparent !important;
 }
 
+.bytemd-fullscreen {
+    z-index: 10000;
+    background-color: white !important;
+}
+
+.dark .bytemd-fullscreen {
+    background-color: black !important;
+}
+
 .dark .bytemd, .dark .bytemd-toolbar, .dark .CodeMirror, .dark .bytemd-status, .dark .bytemd-split .bytemd-preview {
     color: white;
     border-color: #666;
@@ -26,3 +35,4 @@
 .dark .markdown-body {
     color: white;
 }
+
