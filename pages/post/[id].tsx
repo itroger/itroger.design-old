@@ -10,6 +10,7 @@ import format from '@/utils/date'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dark from 'react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark'
 import { VFile } from 'vfile'
+import '@codesandbox/sandpack-react/dist/index.css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await prisma.post.findMany()
@@ -72,6 +73,7 @@ const PostDetail: React.FC<{ post: Post }> = props => {
                       template="react-ts"
                       theme="dark"
                       files={{
+                        // @ts-ignore
                         '/App.tsx': children[0]
                       }}
                     />

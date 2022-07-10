@@ -9,7 +9,7 @@
     "@bytemd/plugin-gfm": "^1.17.1",
     "@bytemd/plugin-highlight": "^1.17.1",
     "@bytemd/react": "^1.17.1",
-    "@codesandbox/sandpack-react": "^1.2.2",
+    "@codesandbox/sandpack-react": "^0.19.8-experimental.7",
     "@headlessui/react": "^1.6.5",
     "@mdx-js/mdx": "^2.1.2",
     "@mdx-js/react": "^2.1.2",
