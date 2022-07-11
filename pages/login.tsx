@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   if (session) {
     return {
       redirect: {
-        destination: String(context.query.callbackUrl),
+        destination: '/',
         permanent: false
       }
     }

@@ -88,7 +88,7 @@ const Header = () => {
           ) : (
             <>
               {router.pathname !== '/login' && (
-                <Link href={`/login?callbackUrl=${router.pathname}`}>
+                <Link href="/login">
                   <a className="cursor-pointer text-zinc-900 dark:text-zinc-200 text-base">
                     登录
                   </a>
