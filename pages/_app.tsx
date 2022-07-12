@@ -30,6 +30,9 @@ const App: React.FC<AppProps> = props => {
       <Layout>
         <Head>
           <title>凡心所向</title>
+          <meta name="author" content="itroger" />
+          <meta name="description" content="高度决定影响力" />
+          <meta name="keywords" content="itroger,博客" />
           <link rel="icon" href="/favicon.svg" type="image/svg" />
         </Head>
         {router.asPath
