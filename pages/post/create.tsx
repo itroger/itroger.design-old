@@ -10,6 +10,7 @@ import 'highlight.js/styles/github.css'
 
 const PostCreate = () => {
   const [title, setTitle] = useState<string>('')
+  const [tags, setTags] = useState<string>('')
   const [content, setContent] = useState<string>('')
   const [files, setFiles] = useState<string[]>([])
 
@@ -31,6 +32,7 @@ const PostCreate = () => {
         title,
         content,
         cover: '',
+        tags: tags.split(' '),
         userId: Number(session.user.id),
         username: session.user.name
       }
@@ -38,12 +40,17 @@ const PostCreate = () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 h-full">
-      <div className="editor flex gap-2">
+    <div className="flex flex-col gap-2 h-full p-2">
+      <div className="editor flex flex-col md:flex-row gap-2">
         <input
           className="appearance-none outline-none flex-1 px-2 dark:text-zinc-200 bg-transparent border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
           placeholder="输入文章标题..."
           onChange={e => setTitle(e.target.value)}
+        />
+        <input
+          className="appearance-none outline-none flex px-2 dark:text-zinc-200 bg-transparent border border-zinc-300 dark:border-666 rounded focus:border-black dark:focus:border-white"
+          placeholder="输入标签，空格分割"
+          onChange={e => setTags(e.target.value)}
         />
         <button
           className="px-4 py-1 text-white dark:text-black hover:text-black hover:dark:text-white bg-black dark:bg-white border border-black dark:border-white hover:bg-white hover:dark:bg-black rounded"

@@ -71,6 +71,7 @@ model Post {
   title     String
   content   String
   cover     String
+  tags      String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    Int      @map("user_id")

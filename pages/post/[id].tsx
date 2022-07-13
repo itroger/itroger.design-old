@@ -58,6 +58,16 @@ const PostDetail: React.FC<{ post: Post }> = props => {
     <div className="flex justify-center h-full md:p-2">
       <div className="flex flex-col gap-4  max-w-5xl w-full p-4 md:px-8 md:py-8 bg-white md:bg-amber-50 dark:bg-black dark:md:bg-zinc-900 rounded-xl">
         <h2 className="text-2xl text-center font-semibold">{post.title}</h2>
+        <div className="flex justify-center gap-2">
+          {post.tags.map(tag => (
+            <span
+              key={tag}
+              className="px-2 bg-green-100 dark:bg-green-900 rounded"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
         <div className="flex justify-center gap-4 text-gray-600 dark:text-gray-400">
           <span>{post.username}</span>
           <span>{`编辑于 ${format(post.updatedAt, true)}`}</span>
