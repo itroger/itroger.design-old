@@ -15,6 +15,13 @@ import SupabaseSvg from '@/components/Logos/SupabaseSvg'
 import GitSvg from '@/components/Logos/GitSvg'
 import MiniSvg from '@/components/Logos/MiniSvg'
 import NodeSvg from '@/components/Logos/NodeSvg'
+import WebStorm from '@/components/Logos/WebStorm'
+import DataGrip from '@/components/Logos/DataGrip'
+import Designer from '@/components/Logos/Designer'
+import Photo from '@/components/Logos/Photo'
+import Figma from '@/components/Logos/Figma'
+import Notion from '@/components/Logos/Notion'
+import Termius from '@/components/Logos/Termius'
 
 const Logos = {
   NextJsSvg,
@@ -33,7 +40,14 @@ const Logos = {
   SupabaseSvg,
   GitSvg,
   MiniSvg,
-  NodeSvg
+  NodeSvg,
+  WebStorm,
+  DataGrip,
+  Designer,
+  Photo,
+  Figma,
+  Notion,
+  Termius
 }
 
 export default Logos

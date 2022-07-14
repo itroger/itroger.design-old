@@ -3,12 +3,10 @@ const FaviconSvg = (p: JSX.IntrinsicElements['svg']) => (
     viewBox="0 0 200 200"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    style={{
-      fillRule: 'evenodd',
-      clipRule: 'evenodd',
-      strokeLinejoin: 'round',
-      strokeMiterlimit: 2
-    }}
+    fillRule="evenodd"
+    clipRule="evenodd"
+    strokeLinejoin="round"
+    strokeMiterlimit="2"
     width="100%"
     height="100%"
     {...p}
